@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url(pic2.jpg);
+    background-size: cover;
+    background-position: center;
+    font-family: monospace;
+}
+
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(pic2.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.accountbox {
+    width: 550px;
+    height: 650px;
+    background: transparent;
+    color: #fff;
+    top: 55%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.row {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.main-nav {
+    float: right;
+    list-style: none;
+    margin-top: 30px;
+}
+
+.main-nav li {
+    display: inline-block;
+}
+
+.main-nav li.active a {
+    border: 1px solid white;
+}
+
+.main-nav li a:hover {
+    border: 1px solid white;
+}
+
+.main-nav li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-family: "Ambient";
+    font-weight: bold;
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 15px;
+    margin-top: -15px;
+    margin-right: 60px;
+}
+
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(pic2.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.accountbox p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    font-family: "roboto";
+    font-size: 14;
+}
+
+.accountbox input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.accountbox select {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: rgb(190, 140, 0);
+    font-size: 16px;
+}
+
+.accountbox input[type="text"],
+input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+}
+
+.accountbox input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #000000;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.accountbox input[type="submit"]:hover {
+    cursor: pointer;
+    background: rgb(255, 255, 255);
+    color: #000;
+}
+
+.accountbox a {
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(255, 255, 255);
+    margin-left: 50px;
+}
+
+.accountbox a:hover {
+    color: #000000;
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+}
+
+.submit-button {
+    margin-top: 30px;
+}
