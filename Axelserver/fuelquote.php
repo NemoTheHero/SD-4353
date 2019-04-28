@@ -157,7 +157,12 @@ require 'includes/db.in.php';
             // Calling Out The page + pasting in the variable and changing the page based on conditions. 
             echo '
 
-            <br>
+            <center> <h4> Clients who reside in TEXAS recieves a 2% TAX DISCOUNT. <br>
+                          Clients who purchased from us before recieve 1% DISCOUNT.<br>
+                          Clients who requested more than 1,000 Gallons will get an additional 1% DISCOUNT.
+                          Any Purchase made in the summer will require a 4% TAX. Winter will result in a 3% TAX. 
+                    </h4> <br> 
+            </center>
 
             <p>Number of Gallons</p>
             <input type="text" name="cGallons" pattern="\d*" value = "' . $gallons_requested . '" readonly>
@@ -168,10 +173,10 @@ require 'includes/db.in.php';
             <p>Delivery Date</p>
             <input type="date" name="cDate" value= "' . $date_wanted . '" readonly />
             
-            <p>Suggested Price</p>
+            <p>Suggested Price Per Gallon</p>
             <input type="text" name="suggestedPrice" value = "'.$suggested_price.'" readonly >
         
-            <p>Total Amount</p>
+            <p>Total Amount Due</p>
             <input type="text" name="amountDue" value="'.$total_due.'" readonly >
             
             <div class = "submit-button">

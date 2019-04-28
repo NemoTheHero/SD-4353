@@ -25,7 +25,7 @@ session_start(); // start session
                 <ul class="main-nav">
                 <li class="active"><a href="logindex.php"> HOME </a></li>
                 <li><a href="client-profile.php"> PROFILE </a></li>
-                <li><a href=""> HISTORY </a></li>
+                
                 </ul>
 
             </div>

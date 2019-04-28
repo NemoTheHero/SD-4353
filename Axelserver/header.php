@@ -61,7 +61,7 @@ session_start(); // start session
     echo 
     '<form action="includes/logout.in.php" method="post">
                 <ul class="main-button">
-                <li><a class="logoutform"><input type="submit" name="logout-submit" value="LOGOUT"></a></li>
+                <li> <a class="logoutform"> <input type="submit" name="logout-submit" value="LOGOUT"> </a> </li>
                 </ul>
             </div>
           

@@ -23,7 +23,6 @@ require "header.php";
     <div class="button">
          <a href="login.php" class="btn btn-one"> Login!</a>
          <a href="signup.php" class="btn btn-two"> Register!</a>
-         
     </div>';
   }
 ?>
