@@ -35,7 +35,7 @@ if (isset($_POST['signup-submit']))
       header("Location: ../signup.php?error=invalidusername&uemail=".$email);
       exit();
    }
-   else // If the username is already taken in the database make it invalid to have.
+   else 
    {
       // Using this statement to check for any username that already exist in the database
       $sql = "SELECT uidUsers FROM users WHERE uidUsers=?"; // ? is a placeholder

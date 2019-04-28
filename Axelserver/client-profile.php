@@ -19,18 +19,24 @@ require "header.php";
 <div class="accountbox">
     <h1>User Information</h1>
     <!--Login: uid = userid upwd= userpassword-->
-    <form action="includes/login.in.php" method="post">
-        <p>Username</p>
-        <input type="text" name="uFullname" placeholder="Enter Full Name">
+    <form action="includes/profile.in.php" method="post">
+        <p>Full Name</p>
+        <input type="text" name="uFullname" placeholder="Enter Full Name" required>
         <p>Address 1</p>
-        <input type="text" name="uAddress1" placeholder="Enter Address">
+        <input type="text" name="uAddress1" placeholder="Enter Address" required>
         <p>Address 2</p>
         <input type="text" name="uAddress2" placeholder="Enter Address (Optional)">
         <p>City</p>
-        <input type="text" name="uCity" placeholder="Enter City">
+        <input type="text" name="uCity" placeholder="Enter City" required>
+        <div class="zipfield">
+        <p>Zip Code</p>
+        <input id="zip" name="uZip" type="text" pattern="[0-9]*" required>
+        <!--<input type="text" pattern="[0-9]{5,7}"  name = "uZip" placeholder="Enter Zip Code" required/> -->
+        </div>
+
         <!--BIG DROP DOWN BOX FOR SELECTING STATES-->
         <p>State</p>
-        <select name='uState'>
+        <select name='uState' required>
             <option value="AL">AL</option>
             <option value="AK">AK</option>
             <option value="AR">AR</option>
@@ -82,25 +88,13 @@ require "header.php";
             <option value="WI">WI</option>
             <option value="WV">WV</option>
             <option value="WY">WY</option>
-        </select> <br>
-		<Label>ZIP Code</Label><input type="text" pattern="[0-9]{5,7}"  title="Five-Seven digit zip code" />
-
+        </select> 
         <div class = "submit-button">
-        <input type="submit" name="login-submit" value="Submit!">
+        <input type="submit" name="profile-submit" value="Submit!">
         </div>
-        
-
     </form>
 
 </div>
-
-
-
-
-
-
-
-
 
 
 <?php

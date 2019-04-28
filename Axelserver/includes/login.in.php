@@ -52,24 +52,22 @@ if (isset($_POST['login-submit']))
                               // Grabing the user Ids from the db
                               $_SESSION['userId'] = $row['idUsers']; // primary key
                               $_SESSION['userUid'] = $row['uidUsers']; // actual user
+                              $_SESSION['currentUser'] = $row['uidUsers']; // A key to get the session of the current user for updating user info
 
                               // Checking to see if the user logged in for the first time
                               // If the user is first time then make then fill out user form
-                              if (!isset($_COOKIE['firsttime']))
-                              {
-                                    setcookie("firsttime", "no", /* EXPIRE */);
-                                    header('Location: ../client-profile.php?login=SUCCESS&FirstTime');
-                                    exit();
-                              }
-                              else // if not just take them to profile page
-                              {
-                                    header('Location: ../index.php');
-                                    exit();
+                              if (!isset($_COOKIE['visited'])) 
+                              { // no cookie, so probably the first time here
+                                    setcookie ('visited', 'yes', time() + 120); // set visited cookie
+                                    header("Location: ../client-profile.php?login=SUCCESS&FirstTime");
+                                    exit(); // always use exit after redirect to prevent further loading of the page
                               }
 
-                              //header("Location: ../index.php?login=SUCCESS");
-                              //exit();
-                             
+                              else // if not just take them to profile page
+                             {
+                                    header("Location: ../logindex.php?login=SUCCESS");
+                                    exit();
+                             }
 
                         }
                         else // make sure that the password has to be true

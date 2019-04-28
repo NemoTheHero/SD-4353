@@ -18,11 +18,11 @@ require "header.php";
             <!--Login: uid = userid upwd= userpassword uemail=useremail-->
             <form action="includes/signup.in.php" method="post">
                 <p>Username</p>
-                <input type="text" name="uid" placeholder="Enter Username">
+                <input type="text" name="uid" placeholder="Enter Username" required>
                 <p>E-mail</p>
-                <input type="text" name="uemail" placeholder="Enter E-mail">
+                <input type="text" name="uemail" placeholder="Enter E-mail" required>
                 <p>Password</p>
-                <input type="password" name="upwd" placeholder="Enter Password">
+                <input type="password" name="upwd" placeholder="Enter Password" required>
                 <input type="submit" name="signup-submit" value="Signup!">
             </form>
         </div>

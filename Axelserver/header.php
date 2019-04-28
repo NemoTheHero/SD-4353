@@ -18,17 +18,56 @@ session_start(); // start session
 <body>
 
     <header>
+    
+<?php
+  if(isset($_SESSION['userId']))
+  {
+    echo 
+    '<div class="row">
+    <div class="logo"> <img src="image/Axel.png" </div> 
+        <ul class="main-nav">
+        <li class="active"><a href="logindex.php"> HOME </a></li>
+        <li><a href=""> SERVICES </a></li>
+        <li><a href=""> ABOUT </a></li>
+        </ul>
 
-        <!-- Header Class -->
-        <div class="row">
-            <div class="logo">
-                <img src="image/Axel.png" </div> <ul class="main-nav">
-                <li class="active"><a href="index.php"> HOME </a></li>
-                <li><a href=""> SERVICES </a></li>
-                <li><a href=""> ABOUT </a></li>
+    </div>
+</div>';
+
+  }
+
+  else
+  {
+      echo '<div class="row">
+      <div class="logo"> <img src="image/Axel.png" </div> 
+          <ul class="main-nav">
+          <li class="active"><a href="index.php"> HOME </a></li>
+          <li><a href=""> SERVICES </a></li>
+          <li><a href=""> ABOUT </a></li>
+          </ul>
+
+      </div>
+  </div>';
+  }
+?>
+
+        <!-- Header Class for all pages -->
+        
+
+        <!-- Check to see if there is a session logged in, if so show them the logout button-->
+<?php
+  if(isset($_SESSION['userId']))
+  {
+    echo 
+    '<form action="includes/logout.in.php" method="post">
+                <ul class="main-button">
+                <li><a class="logoutform"><input type="submit" name="logout-submit" value="LOGOUT"></a></li>
                 </ul>
-
             </div>
-        </div>
-            <!-- Class to Redirect to register or log in -->
+          
+    </form>';
+
+  }
+?>
+
     </header> 
