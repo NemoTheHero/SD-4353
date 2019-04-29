@@ -61,7 +61,7 @@ session_start(); // start session
     echo '<h1> What would you like to do? </h1> 
     <div class="button">
          <a href="fuelquote.php" class="btn btn-one"> Fuel Quote</a>
-         <a href="" class="btn btn-two"> Fuel History </a>
+         <a href="tran-history.php" class="btn btn-two"> Fuel History </a>
     </div>';
    
   }
