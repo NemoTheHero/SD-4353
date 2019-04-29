@@ -58,7 +58,7 @@ if (isset($_POST['login-submit']))
                               // If the user is first time then make then fill out user form
                               if (!isset($_COOKIE['visited'])) 
                               { // no cookie, so probably the first time here
-                                    setcookie ('visited', 'yes', time() + 90); // set visited cookie
+                                    setcookie ('visited', 'yes', time() + 120); // set visited cookie
                                     header("Location: ../client-profile.php?login=SUCCESS&FirstTime");
                                     exit(); // always use exit after redirect to prevent further loading of the page
                               }

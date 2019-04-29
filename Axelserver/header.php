@@ -17,9 +17,10 @@ session_start(); // start session
 
 <body>
 
-    <header>
+<header>
     
 <?php
+// CHECK TO SEE IF THERE IS A SESSOION LOGGED IN, IF THERE IS THEN LOG OUT.
   if(isset($_SESSION['userId']))
   {
     echo 
@@ -28,7 +29,8 @@ session_start(); // start session
         <ul class="main-nav">
         <li class="active"><a href="logindex.php"> HOME </a></li>
         <li><a href=""> SERVICES </a></li>
-        <li><a href=""> ABOUT </a></li>
+        <li><a href="about.php"> ABOUT </a></li>
+        <li><a href="includes/logout.in.php"> LOGOUT </a></li>
         </ul>
 
     </div>
@@ -43,7 +45,7 @@ session_start(); // start session
           <ul class="main-nav">
           <li class="active"><a href="index.php"> HOME </a></li>
           <li><a href=""> SERVICES </a></li>
-          <li><a href=""> ABOUT </a></li>
+          <li><a href="about.php"> ABOUT </a></li>
           </ul>
 
       </div>
@@ -51,23 +53,5 @@ session_start(); // start session
   }
 ?>
 
-        <!-- Header Class for all pages -->
-        
-
-        <!-- Check to see if there is a session logged in, if so show them the logout button-->
-<?php
-  if(isset($_SESSION['userId']))
-  {
-    echo 
-    '<form action="includes/logout.in.php" method="post">
-                <ul class="main-button">
-                <li> <a class="logoutform"> <input type="submit" name="logout-submit" value="LOGOUT"> </a> </li>
-                </ul>
-            </div>
-          
-    </form>';
-
-  }
-?>
-
-    </header> 
+<!-- Header Class for all pages -->
+</header> 

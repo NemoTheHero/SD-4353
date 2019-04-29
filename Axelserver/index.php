@@ -19,7 +19,8 @@ require "header.php";
   }
   else 
   {
-    echo '<h1>Are You Ready?</h1>
+    echo '<h1> Engineered to last
+          </h1>
     <div class="button">
          <a href="login.php" class="btn btn-one"> Login!</a>
          <a href="signup.php" class="btn btn-two"> Register!</a>

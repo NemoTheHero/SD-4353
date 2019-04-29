@@ -4,12 +4,12 @@
 }
 
 html {
-    background: url(pic2.jpg) no-repeat center center fixed;
+    background: url(car.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(pic2.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(car.jpg);
 }
 
 body {
@@ -61,6 +61,20 @@ h1 {
     font-size: 55px;
     margin-top: 275px;
     margin-left: 40px;
+}
+
+.about h1 {
+    margin-top: 30px;
+    left: 50%;
+    color: white;
+}
+
+.about h2 {
+    text-align: center;
+    color: white;
+    font: lighter;
+    font-size: 25px;
+    margin-top: 50px;
 }
 
 .loginbox {

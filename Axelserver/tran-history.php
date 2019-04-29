@@ -16,7 +16,7 @@ $currentID = $_SESSION['currentUser'];
 <html>
 <head>
 
- <h1> Transaction History</h1>
+ 
  <style>
 
   h1{
@@ -33,10 +33,6 @@ $currentID = $_SESSION['currentUser'];
     }
 
 
-  title{
-      color: white;
-  }
-
   table {
    border-collapse: collapse;
    width: 50%;
@@ -52,11 +48,17 @@ $currentID = $_SESSION['currentUser'];
    border-style: solid;
    background-color: transparent;
    background
+   
     } 
   th {
-   background-color: 	#DAA520;
-   color: white;
-   text-align: center;
+    background-color: #DAA520;
+    color: white;
+    text-align: center;
+    height:60px;
+    border-width: 5px;
+    border-color: 	#DAA520;
+    border-style: solid;
+    height:20%;
     }
   tr:nth-child(even) {background-color: transparent}
  </style>
@@ -65,33 +67,45 @@ $currentID = $_SESSION['currentUser'];
 <body>
 
  <table>
-
- <tr>
-  <th>Gallons Purchased</th> 
-  <th>Total Price</th> 
-  <th>Date of Purchase</th>
- </tr>
-
  <?php
 
-$sql_transaction = "SELECT * FROM fuelquote WHERE client_username ='$currentID'";
-$result = $conn->query($sql_transaction);
+$sql_history = "SELECT * FROM fuelquote WHERE client_username ='$currentID'";
+$result_history = mysqli_query($conn, $sql_history);
+$resultCheck = mysqli_num_rows($result_history);
 
-if ($result-> num_rows > 0) 
+if ($resultCheck > 0) 
 {
-   // output data of each row
-   while($row = $result->fetch_assoc()) {
-    echo "<tr><td id=>" . $row["gallons_requested"]. "</td><td>" . $row["purchase_price"] ."</td><td>"
-    .$row["date_purchased"]. "</td></tr>";
+
+  echo '
+
+    <h1> Transaction History</h1>
+
+    <tr>
+    <th>Gallons Purchased</th> 
+    <th>Total Price</th> 
+    <th>Date of Purchase</th>
+    </tr>
     
+    ';
+
+
+  while($row = $row = $result_history->fetch_assoc()) 
+  {
+  
+
+    echo "<tr><td>" . $row["gallons_requested"]. " Gallons </td><td> $" . 
+    $row["purchase_price"] ."</td><td>"
+    .$row["date_purchased"]. "</td></tr>";
+
+  }
 }
 
-//echo "</table>";
-//echo "</title>";
+else { 
 
-} 
+  echo "<h1 style='color: #DEB887; font-size: 37px; margin-top: 12%;' > User does not have an existing purchase history </h1>"; 
 
-else { echo "No History"; }
+}
+
 
 ?>
 </table>

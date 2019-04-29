@@ -155,14 +155,30 @@ require 'includes/db.in.php';
             $date_wanted = $_POST['cDate'];
 
             // Calling Out The page + pasting in the variable and changing the page based on conditions. 
+
+            
+            echo "  MARGIN PRICE = (" .$location_Factor. "% State Tax - " .$rate_History. "% History Discount + " .$gallon_rate. "% Gallons Discount + " .$company_Profit. " Profit Margin + " 
+            .$season_rate. " Seasonal Rate) * $" .$current_price."";
+
+            echo ' <br> 
+            SUGGESTED PRICE = $'.$current_price.' Current Price x '.$margin_price.' Margin Price  
+            <br>
+            TOTAL PRICE = $'.$suggested_price.' Suggested Price x '.$gallons_requested.' Gallons';
+            
+            /*echo '  <center> 
+            <h4> 
+            Clients who reside in TEXAS recieves a 2% TAX DISCOUNT. 
+            <br>
+            Clients who purchased from us before recieve 1% DISCOUNT.<br>
+            Clients who requested more than 1,000 Gallons will get an additional 1% DISCOUNT.
+            Any Purchase made in the summer will require a 4% TAX. Winter will result in a 3% TAX. 
+            </h4> <br> 
+            </center>';*/
+
+
             echo '
 
-            <center> <h4> Clients who reside in TEXAS recieves a 2% TAX DISCOUNT. <br>
-                          Clients who purchased from us before recieve 1% DISCOUNT.<br>
-                          Clients who requested more than 1,000 Gallons will get an additional 1% DISCOUNT.
-                          Any Purchase made in the summer will require a 4% TAX. Winter will result in a 3% TAX. 
-                    </h4> <br> 
-            </center>
+            <br><br>
 
             <p>Number of Gallons</p>
             <input type="text" name="cGallons" pattern="\d*" value = "' . $gallons_requested . '" readonly>
@@ -175,24 +191,63 @@ require 'includes/db.in.php';
             
             <p>Suggested Price Per Gallon</p>
             <input type="text" name="suggestedPrice" value = "'.$suggested_price.'" readonly >
-        
+
+            
             <p>Total Amount Due</p>
             <input type="text" name="amountDue" value="'.$total_due.'" readonly >
+       
             
             <div class = "submit-button">
             <input type="submit" name="quote-submit" value="Submit!">
             </div>';
-        } else // Kepping the page the same
-            {
+        } 
 
-            echo '<center> <h4> Fill out the form to get an estimation of total price. When you are ready hit Submit </h4> <br> </center>
-            
+
+        else if (isset($_POST['quote-submit'])) {
+
+            //VARIABLES
+            $gallons_requested = filter_var($_POST['cGallons'], FILTER_VALIDATE_INT);
+            $date_wanted = $_POST['cDate'];
+            $currentID = $_SESSION['currentUser'];
+            $purchase_price = $_POST['amountDue'];
+            // SQL QUERY 
+            $sql = "INSERT INTO fuelquote (client_username,gallons_requested,purchase_price,date_purchased) VALUES (?,?,?,?)";
+            $stmt = mysqli_stmt_init($conn); // Connect to database by initializing 
+            mysqli_stmt_prepare($stmt, $sql);
+            mysqli_stmt_bind_param($stmt, "siis", $currentID, $gallons_requested, $purchase_price, $date_wanted); // Take info from user to send to db using our statement
+            mysqli_stmt_execute($stmt); // Execute the statement and run it inside our db to see if there is a match
+
+           // header("Location:fuelquote.php?dataInput=SUCCESS");
+
+           echo '<center> <h3> Thank You! Would you like to request another fuel order? </h3> </center> <br>';
+           echo'
             <p>Number of Gallons</p>
             <input type="text" name="cGallons" pattern="\d*" required>
 
-            <p>Location</p>
-            <input type="text" name="cLocation" readonly>
+            
 
+            <p>Delivery Date</p>
+            <input type="date" name="cDate" required>
+
+            <div class = "submit-button">
+            <input type="submit" name="get-price" value="Get Price">
+            </div>
+
+            ';
+           
+
+        }
+
+        else // Kepping the page the same
+            {
+            
+            echo '<center> <h3> Fill out the form to get an estimation of total price. When you are ready click Submit </h3> <br> </center>';
+        
+            echo'
+            <p>Number of Gallons</p>
+            <input type="text" name="cGallons" pattern="\d*" required>
+
+            
             <p>Delivery Date</p>
             <input type="date" name="cDate" required>
 
@@ -204,30 +259,9 @@ require 'includes/db.in.php';
             }
 
 
-        if (isset($_POST['quote-submit'])) {
-
-            //VARIABLES
-            $gallons_requested = filter_var($_POST['cGallons'], FILTER_VALIDATE_INT);
-            $date_wanted = $_POST['cDate'];
-            $currentID = $_SESSION['currentUser'];
-            $purchase_price = $_POST['amountDue'];
-
-            // SQL QUERY 
-            $sql = "INSERT INTO fuelquote (client_username,gallons_requested,purchase_price,date_purchased) VALUES (?,?,?,?)";
-            $stmt = mysqli_stmt_init($conn); // Connect to database by initializing 
-            mysqli_stmt_prepare($stmt, $sql);
-            mysqli_stmt_bind_param($stmt, "siis", $currentID, $gallons_requested, $purchase_price, $date_wanted); // Take info from user to send to db using our statement
-            mysqli_stmt_execute($stmt); // Execute the statement and run it inside our db to see if there is a match
-            header("Location:fuelquote.php?dataInput=SUCCESS");
-
-           // echo '<center> <h4> Thank You! Would you like to request another fuel order? </h4> </center>';
-
-        }
-
+        
         // END OF PHP CODE
         ?>
-
-
     </form>
 </div>
 

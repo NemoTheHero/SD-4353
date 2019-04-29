@@ -24,6 +24,7 @@ require "header.php";
                 <p>Password</p>
                 <input type="password" name="upwd" placeholder="Enter Password" required>
                 <input type="submit" name="signup-submit" value="Signup!">
+                <a href="signup.php">Already have an account?</a>
             </form>
         </div>
     </main>

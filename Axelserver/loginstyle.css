@@ -1,14 +1,14 @@
 body {
     margin: 0;
     padding: 0;
-    background: url(pic2.jpg);
+    background: url(car.jpg);
     background-size: cover;
     background-position: center;
     font-family: monospace;
 }
 
 header {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(pic2.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(car.jpg);
     height: 100vh;
     background-size: cover;
     background-position: center;
@@ -66,12 +66,12 @@ h1 {
     text-align: center;
     font-size: 35px;
     margin-bottom: 15px;
-    margin-top: -15px;
+    margin-top: -85px;
     margin-right: 60px;
 }
 
 header {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(pic2.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(car.jpg);
     height: 100vh;
     background-size: cover;
     background-position: center;

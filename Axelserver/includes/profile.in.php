@@ -16,7 +16,6 @@ if (isset($_POST['profile-submit']))
       session_start();
    }
    
-   
    // Setting all the variables from the POST method to fetch it into the databse
    // Variables for the POST method to fetch data
           
@@ -28,8 +27,14 @@ if (isset($_POST['profile-submit']))
           $zipCode = $_POST['uZip'];
           $state = $_POST['uState'];
           $currentID = $_SESSION['currentUser'];
-      
 
+         $stmt = mysqli_stmt_init($conn);
+
+         // Using this statement to check for any username that already exist in the database
+         $check_sql = "SELECT currentUser FROM profiles WHERE currentUser='$currentID'"; 
+         $result_sql = mysqli_query($conn, $check_sql);
+         $resultCheck = mysqli_fetch_assoc($result_sql);
+      
 
    // Error Handling for Zipcode
    if (strlen($zipCode) > 9 || strlen($zipCode) < 5) 
@@ -37,6 +42,16 @@ if (isset($_POST['profile-submit']))
       // Send user back to the same page if there is an error
       header("Location: ../client-profile.php?error=InvalidZip".$currentID);
       exit(); // Terminating the script if there is an error to prevent other codes from executing
+   }
+
+   else if($resultCheck > 0)
+   {
+      $update_sql = "UPDATE profiles SET uFullname = '$fullname', uAddress = '$addressOne', uAddresstwo = '$addressTwo', 
+      uCity = '$city', uZip = '$zipCode', uState='$state' WHERE currentUser = '$currentID'";
+      $update_server = mysqli_query($conn,$update_sql);
+      header("Location: ../logindex.php?dataInput=SUCCESS");
+      exit();
+
    }
         
     
@@ -66,37 +81,9 @@ if (isset($_POST['profile-submit']))
          }
    }
            
-   mysqli_stmt_close($stmt); // Closing statment 
-   mysqli_close($conn); // Closing connection
+  // mysqli_stmt_close($stmt); // Closing statment 
+  // mysqli_close($conn); // Closing connection
 }
-
-   
-
-
-
-   
-   
-   
-
-   // Ending connection 
-   //mysqli_stmt_close($stmt); // Closing statment 
-   //mysqli_close($conn); // Closing connection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // If it is not user's firstime user can update this 
